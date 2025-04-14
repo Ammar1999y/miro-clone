@@ -13,7 +13,14 @@ const convex = new ConvexReactClient(convexUrl);
 
 export const ConvexClientProvider = ({ children }: PropsWithChildren) => {
   return (
-    <ClerkProvider>
+    <ClerkProvider
+      appearance={{
+        layout: {
+          // @ts-ignore
+          unsafe_disableDevelopmentModeWarnings: true,
+        },
+      }}
+    >
       <ConvexProviderWithClerk useAuth={useAuth} client={convex}>
         <Authenticated>{children}</Authenticated>
 
